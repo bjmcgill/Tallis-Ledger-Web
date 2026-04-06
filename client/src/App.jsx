@@ -8,7 +8,7 @@ const App = () => {
   const [lastCredentials, setLastCredentials] = useState({
     user: '',
     database: '',
-    port: '',
+    port: '3306',
   });
   const [permissions, setPermissions] = useState({});
   // ledgerFilter: which dropdown is active and its selected id

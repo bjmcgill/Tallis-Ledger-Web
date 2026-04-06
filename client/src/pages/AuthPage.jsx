@@ -7,7 +7,7 @@ const AuthPage = ({ lastCredentials, onConnected }) => {
   const [user, setUser] = useState(lastCredentials?.user || '');
   const [password, setPassword] = useState('');
   const [database, setDatabase] = useState(lastCredentials?.database || '');
-  const [port, setPort] = useState(lastCredentials?.port || '');
+  const [port, setPort] = useState(lastCredentials?.port || '3306');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
