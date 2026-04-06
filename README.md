@@ -54,4 +54,6 @@ export default defineConfig(({ mode }) => ({
 
 This should also add the /accounts/ base in production mode.
 
-If you have any ideas on fixing this problem please let me know by emailing bjmcgill34@gmail.com . It would be much appreciated
+If you have any ideas on fixing this problem please let me know by emailing bjmcgill34@gmail.com . It would be much appreciated.
+
+You can see my full stack overflow question with added details including my .htaccess files at https://stackoverflow.com/questions/79920822/trying-to-install-node-js-app-on-cloudlinux-server-using-cpanel-and-passenger
