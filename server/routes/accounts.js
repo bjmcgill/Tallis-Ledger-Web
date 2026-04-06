@@ -1,0 +1,8 @@
+const express = require('express');
+const router = express.Router();
+const requireAuth = require('../middleware/requireAuth');
+const { listAccounts } = require('../controllers/accountsController');
+
+router.get('/', requireAuth, listAccounts);
+
+module.exports = router;

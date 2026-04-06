@@ -1,0 +1,42 @@
+# ============================================================
+# Tallis Ledger Web — .claudeignore
+# Tells Claude Code which files/dirs to exclude from context
+# ============================================================
+
+INSTRUCTIONS.md
+INSTRUCTIONS2.md
+
+# --- Dependencies (large, not useful to Claude) ---
+node_modules/
+client/node_modules/
+server/node_modules/
+
+# --- Build output (generated, not source) ---
+client/dist/
+client/build/
+server/dist/
+
+# --- Environment / secrets ---
+.env
+.env.*
+server/.env
+server/.env.production
+client/.env
+
+# --- Logs ---
+*.log
+logs/
+
+# --- Deployment artefacts ---
+*.zip
+
+# --- Vite internals ---
+client/.vite/
+
+# --- Database dumps ---
+*.sql
+*.dump
+
+# --- OS noise ---
+.DS_Store
+Thumbs.db

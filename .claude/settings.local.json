@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cd /c/Users/bjmcg/Tallis-Ledger-Web/client && npm run build 2>&1 | tail -8)",
+      "Bash(cd /c/Users/bjmcg/Tallis-Ledger-Web/client && npm run build 2>&1 | tail -6)",
+      "Bash(cd /c/Users/bjmcg/Tallis-Ledger-Web/client && npm run build 2>&1 | tail -5)"
+    ]
+  }
+}
