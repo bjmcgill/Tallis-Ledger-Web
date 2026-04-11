@@ -75,7 +75,7 @@ The Add and Edit modes give you the capability to cancel, save a transaction, ad
 
 Suppose you received a £100 from the council as a restricted grant. You would create a restricted income fund called "Council Fund", a "Council Income" account, and you would put the money in the Bank.
 
-You would create the following rows in the Fund and Account tables using DB Browser
+You would create the following rows in the Fund and Account tables using DBeaver
 
 **Fund**
 
@@ -101,7 +101,7 @@ Then you would enter the following double entry in the main ledger window
 
 Note that the second split (row) in the ledger is negative. Money is coming from the income account and going into the bank account. The income is always negative because it is a credit, and the current asset is always positive because it is a debit. This is not what you might expect from looking at a bank statement, but bookkeepers always do it this way.
 
-Once the Accounts and Fund have been entered into the tables using DB Browser, you will be able to select them in the ledger by means of a drop down box.
+Once the Accounts and Fund have been entered into the tables using DBeaver, you will be able to select them in the ledger by means of a drop down box.
 
 If you are still confused, I will write more extensive documentation for the application in this repository's wiki.
 
@@ -113,7 +113,7 @@ You can launch DBeaver and you can select the views.
 
 LedgerViewWithFundBalance shows all the transactions which have been entered partitioned by Fund, and containing a balance column.
 
-If you only want to see the transactions for a particular fund you can enter the following sql and execute it within DB Browser:
+If you only want to see the transactions for a particular fund you can enter the following sql and execute it within DBeaver:
 
 ```
 SELECT * FROM LedgerViewWithFundBalance WHERE FundId=200
