@@ -17,6 +17,16 @@ const AuthPage = ({ lastCredentials, onConnected }) => {
     setLoading(true);
     try {
       const result = await connect({ user, password, database, port });
+      // Ask the browser's password manager to offer to save the credentials.
+      // Only username/password are stored here; non-secret fields persist via localStorage.
+      if (window.PasswordCredential) {
+        try {
+          const cred = new window.PasswordCredential({ id: user, password });
+          await navigator.credentials.store(cred);
+        } catch {
+          // Credential Management unavailable/declined — non-fatal
+        }
+      }
       onConnected({ user, database, port }, result.permissions);
     } catch (err) {
       setError(err.message);
@@ -35,6 +45,7 @@ const AuthPage = ({ lastCredentials, onConnected }) => {
             <label htmlFor="user">User</label>
             <input
               id="user"
+              name="username"
               type="text"
               value={user}
               onChange={(e) => setUser(e.target.value)}
@@ -46,6 +57,7 @@ const AuthPage = ({ lastCredentials, onConnected }) => {
             <label htmlFor="password">Password</label>
             <input
               id="password"
+              name="password"
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -56,9 +68,11 @@ const AuthPage = ({ lastCredentials, onConnected }) => {
             <label htmlFor="database">Database</label>
             <input
               id="database"
+              name="database"
               type="text"
               value={database}
               onChange={(e) => setDatabase(e.target.value)}
+              autoComplete="on"
               required
             />
           </div>
@@ -66,9 +80,11 @@ const AuthPage = ({ lastCredentials, onConnected }) => {
             <label htmlFor="port">Port</label>
             <input
               id="port"
+              name="port"
               type="number"
               value={port}
               onChange={(e) => setPort(e.target.value)}
+              autoComplete="on"
               required
               min="1"
               max="65535"

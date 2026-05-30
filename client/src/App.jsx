@@ -3,13 +3,24 @@ import AuthPage from './pages/AuthPage.jsx';
 import LedgerPage from './pages/LedgerPage.jsx';
 import AddEditPage from './pages/AddEditPage.jsx';
 
+const STORAGE_KEY = 'tallis.lastCredentials';
+
+const loadLastCredentials = () => {
+  try {
+    const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+    return {
+      user: saved.user || '',
+      database: saved.database || '',
+      port: saved.port || '3306',
+    };
+  } catch {
+    return { user: '', database: '', port: '3306' };
+  }
+};
+
 const App = () => {
   const [currentPage, setCurrentPage] = useState('auth');
-  const [lastCredentials, setLastCredentials] = useState({
-    user: '',
-    database: '',
-    port: '3306',
-  });
+  const [lastCredentials, setLastCredentials] = useState(loadLastCredentials);
   const [permissions, setPermissions] = useState({});
   // ledgerFilter: which dropdown is active and its selected id
   const [ledgerFilter, setLedgerFilter] = useState({ type: 'account', id: 0 });
@@ -18,12 +29,24 @@ const App = () => {
   const [editTransactionId, setEditTransactionId] = useState(null);
 
   const handleConnected = (creds, perms) => {
-    setLastCredentials({ user: creds.user, database: creds.database, port: creds.port });
+    const nextCreds = { user: creds.user, database: creds.database, port: creds.port };
+    setLastCredentials(nextCreds);
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(nextCreds));
+    } catch {
+      // localStorage unavailable (private mode / disabled) — non-fatal
+    }
     setPermissions(perms);
     setCurrentPage('ledger');
   };
 
   const handleLogout = () => {
+    try {
+      localStorage.removeItem(STORAGE_KEY);
+    } catch {
+      // localStorage unavailable — non-fatal
+    }
+    setLastCredentials({ user: '', database: '', port: '3306' });
     setCurrentPage('auth');
   };
 

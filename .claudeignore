@@ -5,6 +5,7 @@
 
 INSTRUCTIONS.md
 INSTRUCTIONS2.md
+INSTRUCTIONS3.md
 
 # --- Dependencies (large, not useful to Claude) ---
 node_modules/
