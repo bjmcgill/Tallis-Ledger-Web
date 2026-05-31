@@ -1,2 +1,2 @@
-const apiBase = import.meta.env.MODE === 'production' ? '/accounts' : '';
+const apiBase = '';
 export default apiBase;

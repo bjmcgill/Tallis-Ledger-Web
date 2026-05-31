@@ -275,7 +275,9 @@ const AddEditPage = ({ mode, transactionId, ledgerFilter, permissions, onDone })
         <button onClick={handleDeleteSplit} disabled={!canEditSplits}>
           Delete Split
         </button>
-        <button onClick={handleBalanceSplit}>Balance Split</button>
+        <button onClick={handleBalanceSplit} disabled={!canEditSplits}>
+          Balance Split
+        </button>
         {mode === 'edit' && (
           <button onClick={handleDeleteTransaction} disabled={!canDelete} className="btn-danger">
             Delete Transaction

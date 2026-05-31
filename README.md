@@ -30,7 +30,9 @@ npm install
 
 This will load the necessary libraries
 
-Now all you need is to start the server, and run the dev environment.
+Now start the mysql server using whichever method works for the way you installed it.
+
+Now all you need is to start the node.js server, and run the dev environment.
 
 create a tab in Windows Terminal and type:
 
@@ -49,6 +51,10 @@ npm run dev
 keep these tabs running as you open a web browser with the url: http://localhost:5173/
 
 I tried running the production version of this app in mydomain.com/accounts but unfortunately could not get it to work. Let me know if you can get it to run on a Wordpress server like Krystal Web Host, in public_html/accounts.
+
+I got it working in localhost/accounts using the caddy web server, which is more user friendly than the Litespeed web server used by Krystal.
+
+I then completely changed tack, and rewrote the program so that it would start with the url subdomain.mydomain.com without the accounts prefix. Starting with this commit, I then got it working on a vps running caddy, using this method. Use the previous commit from this change if you want to run it from localhost/accounts
 
 Before you open the database you must create it with the commands:
 
