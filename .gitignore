@@ -46,7 +46,7 @@ deploy-zip.bat.bak
 client/.vite/
 
 # --- MySQL / database dumps ---
-*.sql
+# *.sql
 *.dump
 
 # --- Misc ---
